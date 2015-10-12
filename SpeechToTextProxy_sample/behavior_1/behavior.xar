@@ -10,15 +10,15 @@
         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
         <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
         <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-        <Input name="snakazawa/SpeechToText/Status" type="0" type_size="1" nature="4" stm_value_name="snakazawa/SpeechToText/Status" inner="1" tooltip="snakazawa/SpeechToText/Status desc" id="4" />
-        <Input name="snakazawa/SpeechToText/Error" type="0" type_size="1" nature="4" stm_value_name="snakazawa/SpeechToText/Error" inner="1" tooltip="snakazawa/SpeechToText/Error desc" id="5" />
-        <Input name="snakazawa/SpeechToText/WordRecognition" type="0" type_size="1" nature="4" stm_value_name="snakazawa/SpeechToText/WordRecognition" inner="1" tooltip="snakazawa/SpeechToText/WordRecognition desc" id="6" />
+        <Input name="Bluemix/SpeechToTextProxy/WordRecognition" type="0" type_size="1" nature="4" stm_value_name="Bluemix/SpeechToTextProxy/WordRecognition" inner="1" tooltip="Bluemix/SpeechToTextProxy/WordRecognition desc" id="4" />
+        <Input name="Bluemix/SpeechToTextProxy/Status" type="0" type_size="1" nature="4" stm_value_name="Bluemix/SpeechToTextProxy/Status" inner="1" tooltip="Bluemix/SpeechToTextProxy/Status desc" id="5" />
+        <Input name="Bluemix/SpeechToTextProxy/Error" type="0" type_size="1" nature="4" stm_value_name="Bluemix/SpeechToTextProxy/Error" inner="1" tooltip="Bluemix/SpeechToTextProxy/Error desc" id="6" />
         <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="ボックスBehaviorの終了時に信号を送る。" id="7" />
         <Timeline enable="0">
             <BehaviorLayer name="behavior_layer1">
                 <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram>
-                        <Box name="Wait" id="6" localization="8" tooltip="Wait a moment before sending a signal on the output. &#x0A;Can be stopped anytime. &#x0A;Stimulating the input again before output is activated restarts the waiting period.&#x0A;" x="498" y="17">
+                        <Box name="Wait" id="6" localization="8" tooltip="Wait a moment before sending a signal on the output. &#x0A;Can be stopped anytime. &#x0A;Stimulating the input again before output is activated restarts the waiting period.&#x0A;" x="456" y="3">
                             <bitmap>media/images/box/wait.png</bitmap>
                             <script language="4">
                                 <content>
@@ -89,7 +89,7 @@
                             <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                             <Parameter name="key" inherits_from_parent="0" content_type="3" value="snakazawa/SpeechToText/Status" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                         </Box>
-                        <Box name="Raise Event (1)" id="1" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="659" y="132">
+                        <Box name="Raise Event (1)" id="1" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="516" y="98">
                             <bitmap>media/images/box/sensors/STM.png</bitmap>
                             <script language="4">
                                 <content>
@@ -142,7 +142,7 @@ class MyClass(GeneratedClass):
                             <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" />
                             <Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" />
                         </Box>
-                        <Box name="Text Edit (1)" id="4" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="408" y="139">
+                        <Box name="Text Edit (1)" id="4" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="265" y="105">
                             <bitmap>media/images/box/interaction/vocabulary.png</bitmap>
                             <script language="4">
                                 <content>
@@ -164,7 +164,7 @@ class MyClass(GeneratedClass):
                             <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" />
                             <Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" />
                         </Box>
-                        <Box name="Say_Error" id="5" localization="8" tooltip="Say some text. Note that you must open the box to enter the text." x="222" y="128">
+                        <Box name="Say_Error" id="5" localization="8" tooltip="Say some text. Note that you must open the box to enter the text." x="167" y="330">
                             <bitmap>media/images/box/interaction/say.png</bitmap>
                             <script language="4">
                                 <content>
@@ -373,7 +373,7 @@ class MyClass(GeneratedClass):
                             </Timeline>
                             <Resource name="Speech" type="Lock" timeout="0" />
                         </Box>
-                        <Box name="Log_Words" id="8" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="67" y="259">
+                        <Box name="Log_Words" id="8" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="54" y="211">
                             <bitmap>media/images/box/print.png</bitmap>
                             <script language="4">
                                 <content>
@@ -421,7 +421,7 @@ class MyClass(GeneratedClass):
                                 <Choice value="Debug" />
                             </Parameter>
                         </Box>
-                        <Box name="Log_Error" id="9" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="105" y="124">
+                        <Box name="Log_Error" id="9" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="50" y="326">
                             <bitmap>media/images/box/print.png</bitmap>
                             <script language="4">
                                 <content>
@@ -469,7 +469,7 @@ class MyClass(GeneratedClass):
                                 <Choice value="Debug" />
                             </Parameter>
                         </Box>
-                        <Box name="Say_Top_Word" id="10" localization="8" tooltip="Say the text received on its input." x="179" y="257">
+                        <Box name="Say_Top_Word" id="10" localization="8" tooltip="Say the text received on its input." x="166" y="209">
                             <bitmap>media/images/box/interaction/say.png</bitmap>
                             <script language="4">
                                 <content>
@@ -530,10 +530,10 @@ class MyClass(GeneratedClass):
                         <Link inputowner="4" indexofinput="2" outputowner="6" indexofoutput="4" />
                         <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" />
                         <Link inputowner="2" indexofinput="2" outputowner="3" indexofoutput="3" />
-                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="5" />
-                        <Link inputowner="8" indexofinput="2" outputowner="0" indexofoutput="6" />
-                        <Link inputowner="10" indexofinput="2" outputowner="0" indexofoutput="6" />
-                        <Link inputowner="9" indexofinput="2" outputowner="0" indexofoutput="5" />
+                        <Link inputowner="8" indexofinput="2" outputowner="0" indexofoutput="4" />
+                        <Link inputowner="9" indexofinput="2" outputowner="0" indexofoutput="6" />
+                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="6" />
+                        <Link inputowner="10" indexofinput="2" outputowner="0" indexofoutput="4" />
                     </Diagram>
                 </BehaviorKeyframe>
             </BehaviorLayer>
