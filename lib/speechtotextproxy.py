@@ -5,7 +5,7 @@ Pepperのマイクから拾った音声をテキストに変換するプロキ�
 変換にはBluemix Speech To Textを用い、WebSocketで音声データを流し続ける。
 変換結果はPepperのメモリに格納される。
 
-# Memory
+# Memories
 ## WordRecognition
 [[word:utf-8, confidence:float]*]
 
