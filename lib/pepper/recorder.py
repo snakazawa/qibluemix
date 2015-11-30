@@ -2,7 +2,7 @@
 
 import time
 import wave
-from naoqi import (ALProxy, ALModule)
+from naoqi import ALProxy, ALModule
 
 
 class StreamingAudioRecorder(ALModule):

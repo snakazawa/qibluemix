@@ -51,11 +51,11 @@ def main():
 
     logger.info("ready...")
 
-    manual(proxy, duration=10, after_wait=3)
+    # manual(proxy, duration=10, after_wait=3)
 
-    # forever
-    # while True:
-    #     time.sleep(1)
+    # to service
+    while True:
+        time.sleep(1)
 
 
 def manual(proxy, duration=10, after_wait=3):

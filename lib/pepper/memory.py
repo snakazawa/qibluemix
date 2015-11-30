@@ -37,7 +37,6 @@ class SpeechRecognitionMemory(ALModule):
 
     def __init__(self, name, event_root_path):
         ALModule.__init__(self, name)
-        self.BIND_PYTHON(self.getName(), "_on_received_status")
         self.memory = ALProxy("ALMemory")
         self.name = name
         self.event_root_path = event_root_path
@@ -46,12 +45,15 @@ class SpeechRecognitionMemory(ALModule):
         self.subscribed_on_received_status = False
 
     def init_events(self, status_handler=None):
-        self.status_handler = status_handler
-        if not self.subscribed_on_received_status:
-            self.memory.subscribeToEvent(self.event_root_path + self.STATUS_EVENT, self.getName(), "_on_received_status")
         self.memory.raiseEvent(self.event_root_path + self.STATUS_EVENT, "stop")
         self.memory.raiseEvent(self.event_root_path + self.WORD_EVENT, [])
         self.memory.raiseEvent(self.event_root_path + self.ERROR_EVENT, None)
+        self.status_handler = status_handler
+        if not self.subscribed_on_received_status:
+            key = self.event_root_path + self.STATUS_EVENT
+            logger.debug("[Memory] subscribe {0} {1}".format(key, self.getName()))
+            self.subscribed_on_received_status = True
+            self.memory.subscribeToEvent(key, self.getName(), "_on_received_status")
 
     def raise_event(self, name, value):
         self.memory.raiseEvent(self.event_root_path + name, value)
