@@ -53,7 +53,7 @@ class SpeechRecognitionMemory(ALModule):
             key = self.event_root_path + self.STATUS_EVENT
             logger.debug("[Memory] subscribe {0} {1}".format(key, self.getName()))
             self.subscribed_on_received_status = True
-            self.memory.subscribeToEvent(key, self.getName(), "_on_received_status")
+            self.memory.subscribeToEvent(key, self.getName(), "on_received_status")
 
     def raise_event(self, name, value):
         self.memory.raiseEvent(self.event_root_path + name, value)
@@ -74,7 +74,7 @@ class SpeechRecognitionMemory(ALModule):
     def recognize(self, value):
         self.raise_event(self.WORD_EVENT, value)
 
-    def _on_received_status(self, key, value, message):
+    def on_received_status(self, key, value, message):
         logger.debug("[Memory] received: {0} {1} {2}".format(key, value, message))
-        if self.on_received_status_handler:
-            self.on_received_status_handler(key, value, message)
+        if self.status_handler:
+            self.status_handler(key, value, message)
