@@ -14,7 +14,7 @@ class STTProxy(ALModule):
     変換結果はPepperのメモリに格納される。
 
     # Memories
-    ## WordRecognition
+    ## WordRecognized
     [[word:utf-8, confidence:float]*]
 
     変換結果のリストを格納する。
@@ -33,7 +33,7 @@ class STTProxy(ALModule):
     """
 
     STATUS_EVENT = "Status"
-    WORD_EVENT = "WordRecognition"
+    WORD_EVENT = "WordRecognized"
     ERROR_EVENT = "Error"
 
     def __init__(self, name, event_root_path, streaming_recorder, watson_recognize_stream, confidence=0.4):

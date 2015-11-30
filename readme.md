@@ -14,7 +14,7 @@ Pepperのマイクから拾った音声をテキストに変換し、結果をPe
 
 ## Memories
 
-### WordRecognition
+### WordRecognized
 変換結果のリストを格納する。
 
 ~~~
