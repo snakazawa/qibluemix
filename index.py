@@ -3,7 +3,7 @@
 """
 see readme.md
 """
-
+import time
 from naoqi import (ALBroker)
 from lib.streamingrecorder import StreamingRecorder
 from lib.speechtotextproxy import SpeechToTextProxy
@@ -51,7 +51,7 @@ def main():
 
     # forever
     while True:
-        pass
+        time.sleep(1)
 
 
 def get_token(watson):
