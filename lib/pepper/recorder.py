@@ -16,9 +16,9 @@ class StreamingAudioRecorder(ALModule):
 
     def __init__(self, name, save_path=DEFAULT_SAVE_PATH):
         ALModule.__init__(self, name)
-        self.save_path = save_path
-
         self.BIND_PYTHON(self.getName(), "callback")
+        self.save_path = save_path
+        self.func = None
 
     def start_record(self, func=None):
         self.func = func

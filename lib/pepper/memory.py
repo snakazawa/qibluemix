@@ -6,7 +6,7 @@ from lib import get_logger
 logger = get_logger()
 
 
-class SpeechRecognition(ALModule):
+class SpeechRecognitionMemory(ALModule):
     u"""
     声の検出用Memory
 
