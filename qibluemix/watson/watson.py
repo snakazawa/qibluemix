@@ -4,7 +4,7 @@ import json
 import wave
 import requests
 import re
-from lib.watson import STTStream
+from qibluemix.watson import STTStream
 
 
 class Watson:

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from naoqi import ALProxy, ALModule
-from lib import get_logger
+from qibluemix import get_logger
 
 logger = get_logger()
 

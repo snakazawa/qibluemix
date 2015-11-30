@@ -1,0 +1,2 @@
+from qibluemix.pepper.recorder import StreamingAudioRecorder
+from qibluemix.pepper.memory import SpeechRecognitionMemory

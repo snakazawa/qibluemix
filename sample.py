@@ -6,9 +6,9 @@ see readme.md
 
 import time
 from naoqi import ALBroker
-from lib import STTProxy, get_logger
-from lib.pepper import SpeechRecognitionMemory, StreamingAudioRecorder
-from lib.watson import Watson
+from qibluemix import STTProxy, get_logger
+from qibluemix.pepper import SpeechRecognitionMemory, StreamingAudioRecorder
+from qibluemix.watson import Watson
 
 # ==== parameters ====
 PEPPER_IP = "192.168.10.101"
