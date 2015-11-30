@@ -28,7 +28,7 @@ import json
 from naoqi import (ALProxy, ALModule)
 
 
-class SpeechToTextProxy(ALModule):
+class STTProxy(ALModule):
     STATUS_EVENT = "Status"
     WORD_EVENT = "WordRecognition"
     ERROR_EVENT = "Error"

@@ -11,7 +11,7 @@ from functools import partial
 from websocket._abnf import ABNF
 
 
-class SpeechToTextStreaming:
+class STTStreaming:
     DEFAULT_START_PARAMS = {
         'action': 'start',
         'content-type': 'audio/l16; rate=16000; channels=1',

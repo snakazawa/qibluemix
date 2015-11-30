@@ -8,7 +8,7 @@ import json
 import wave
 import requests
 import re
-from lib.speechtotextstreaming import SpeechToTextStreaming
+from lib.sttstreaming import STTStreaming
 
 
 class WatsonWrap:
@@ -44,7 +44,7 @@ class WatsonWrap:
         # 注意: query parameterの最初はwatson-tokenでないといけない
         url = self._get_url(scheme="wss", action="recognize") \
               + "?watson-token={token}&model={model}".format(token=token, model="ja-JP_BroadbandModel")
-        stream = SpeechToTextStreaming(url, start_params=start_params)
+        stream = STTStreaming(url, start_params=start_params)
         return stream
 
     def tag_recognize(self, image_path):

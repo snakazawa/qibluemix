@@ -6,7 +6,7 @@ see readme.md
 import time
 from naoqi import (ALBroker)
 from lib.streamingrecorder import StreamingRecorder
-from lib.speechtotextproxy import SpeechToTextProxy
+from lib.sttprocy import STTProxy
 from lib.watsonwrap import WatsonWrap
 
 # ===== parameters =====
@@ -43,8 +43,8 @@ def main():
     recorder = StreamingRecorderModule = StreamingRecorder("StreamingRecorderModule")
 
     print "init SpeechToTextProxyMoudle"
-    proxy = SpeechToTextProxyModule = SpeechToTextProxy("SpeechToTextProxyModule", EVENT_ROOT_NAME, recorder, stream,
-                                                        confidence=CONFIDENCE)
+    proxy = SpeechToTextProxyModule = STTProxy("SpeechToTextProxyModule", EVENT_ROOT_NAME, recorder, stream,
+                                               confidence=CONFIDENCE)
     proxy.subscribe_events()
 
     print "ready..."
