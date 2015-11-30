@@ -12,17 +12,19 @@ class StreamingAudioRecorder(ALModule):
     Pepperのマイクに入力されている音声をリアルタイムに取得するためのクラス
     """
 
-    def __init__(self, name):
+    DEFAULT_SAVE_PATH = "temp.wav"
+
+    def __init__(self, name, save_path=DEFAULT_SAVE_PATH):
         ALModule.__init__(self, name)
+        self.save_path = save_path
 
         self.BIND_PYTHON(self.getName(), "callback")
 
-    def start_record(self, func=None, save_to_file=True):
+    def start_record(self, func=None):
         self.func = func
-        self.save_to_file = save_to_file
 
-        if self.save_to_file:
-            self.file = wave.open("temp.wav", "wb")
+        if self.save_path:
+            self.file = wave.open(self.save_path, "wb")
             self.file.setsampwidth(2)
             self.file.setframerate(16000)
             self.file.setnchannels(1)
@@ -34,12 +36,12 @@ class StreamingAudioRecorder(ALModule):
     def stop_record(self):
         self.pepper_microphone.unsubscribe(self.getName())
         time.sleep(1)
-        if self.save_to_file:
+        if self.save_path:
             self.file.close()
 
     # overrideのためCamelCase
     def processRemote(self, input_channels, input_samples, time_stamp, input_buff):
         if self.func:
             self.func(input_channels, input_samples, time_stamp, input_buff)
-        if self.save_to_file:
+        if self.save_path:
             self.file.writeframes(input_buff)
