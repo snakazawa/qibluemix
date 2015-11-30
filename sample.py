@@ -5,7 +5,7 @@ see readme.md
 """
 
 import time
-from naoqi import (ALBroker)
+from naoqi import ALBroker
 from lib import STTProxy, get_logger
 from lib.pepper import SpeechRecognitionMemory, StreamingAudioRecorder
 from lib.watson import Watson
@@ -31,6 +31,11 @@ def main():
     global StreamingAudioRecorderModule
     global broker
 
+    logger.info("init watson")
+    watson = Watson(USERNAME, PASSWORD, URL)
+    token = get_token(watson)
+    stream = watson.recognize_stream(token)
+
     logger.info("init remote pepper")
     broker = ALBroker("myBroker", "0.0.0.0", 0, PEPPER_IP, PEPPER_PORT)
 
@@ -40,31 +45,30 @@ def main():
     logger.info("init SpeechRecognitionMemory")
     memory = SpeechRecognitionMemoryModule = SpeechRecognitionMemory("SpeechRecognitionMemoryModule", EVENT_ROOT_NAME)
 
-    logger.info("init watson")
-    watson = Watson(USERNAME, PASSWORD, URL)
-    token = get_token(watson)
-    stream = watson.recognize_stream(token)
-
     logger.info("init SpeechToTextProxy")
     proxy = STTProxy(recorder, stream, memory)
     proxy.init()
 
     logger.info("ready...")
 
-    logger.info("start")
-    proxy.start()
-
-    time.sleep(10)
-
-    logger.info("stop")
-    proxy.stop()
-    time.sleep(3)
-
-    logger.info("end")
+    manual(proxy, duration=10, after_wait=3)
 
     # forever
     # while True:
     #     time.sleep(1)
+
+
+def manual(proxy, duration=10, after_wait=3):
+    logger.info("start")
+    proxy.start()
+
+    time.sleep(duration)
+
+    logger.info("stop")
+    proxy.stop()
+
+    time.sleep(after_wait)
+    logger.info("end")
 
 
 def get_token(watson):

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-
-
 import time
 import wave
 from naoqi import (ALProxy, ALModule)
 
 
 class StreamingAudioRecorder(ALModule):
-    u"""
+    """
+    // Unicodeドキュメントはnaoqiライブラリに対応していない...
+
     Pepperのマイクに入力されている音声をリアルタイムに取得するためのクラス
     """
 

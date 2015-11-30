@@ -25,19 +25,21 @@ class STTProxy:
         self.memory.init_events(self._on_received_status)
 
     def start(self):
-        logger.debug("[STTProxy] start speech to text")
-        self.memory.start()
-        self.recognize_stream.run(
-            on_open=self._on_stream_open,
-            on_close=self._on_stream_close,
-            on_error=self._on_stream_error,
-            on_message=self._on_stream_message)
+        if self.memory.status != "running":
+            logger.debug("[STTProxy] start speech to text")
+            self.memory.start()
+            self.recognize_stream.run(
+                on_open=self._on_stream_open,
+                on_close=self._on_stream_close,
+                on_error=self._on_stream_error,
+                on_message=self._on_stream_message)
 
     def stop(self):
-        logger.debug("[STTProxy] stop speech to text")
-        self.memory.stop()
-        self.recorder.stop_record()
-        self.recognize_stream.stop()
+        if self.memory.status != "stop":
+            logger.debug("[STTProxy] stop speech to text")
+            self.memory.stop()
+            self.recorder.stop_record()
+            self.recognize_stream.stop()
 
     def _on_stream_open(self, stream):
         logger.debug("[STTProxy] on stream open")
@@ -56,9 +58,7 @@ class STTProxy:
         if self.memory.status != "running":
             return
         d = json.loads(message)
-        if len(d["results"]) == 0:
-            return
-        if not d["results"][0]["final"]:
+        if not d or not d["results"] or len(d["results"]) == 0 or not d["results"][0]["final"]:
             return
         words = [[x["transcript"].encode('utf-8'), x["confidence"]] for x in d["results"][0]["alternatives"]
                  if float(x["confidence"]) >= self.confidence]

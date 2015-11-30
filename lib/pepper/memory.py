@@ -7,7 +7,9 @@ logger = get_logger()
 
 
 class SpeechRecognitionMemory(ALModule):
-    u"""
+    """
+    // Unicodeドキュメントはnaoqiライブラリに対応していない...
+
     声の検出用Memory
 
     # Memories
