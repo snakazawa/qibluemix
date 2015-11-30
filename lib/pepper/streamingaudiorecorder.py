@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 
-"""
-Pepperのマイクに入力されている音声をリアルタイムに取得するためのクラス
-"""
+
 
 import time
 import wave
 from naoqi import (ALProxy, ALModule)
 
 
-class StreamingRecorder(ALModule):
+class StreamingAudioRecorder(ALModule):
+    u"""
+    Pepperのマイクに入力されている音声をリアルタイムに取得するためのクラス
+    """
+
     def __init__(self, name):
         ALModule.__init__(self, name)
 

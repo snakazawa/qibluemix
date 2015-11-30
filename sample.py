@@ -1,28 +1,27 @@
 # -*- coding: utf-8 -*-
 
-"""
+u"""
 see readme.md
 """
+
 import time
 from naoqi import (ALBroker)
-from lib.streamingrecorder import StreamingRecorder
-from lib.sttprocy import STTProxy
-from lib.watsonwrap import WatsonWrap
+from lib import pepper, STTProxy, WatsonWrap, get_logger
 
-# ===== parameters =====
+# ==== parameters ====
 PEPPER_IP = "192.168.___.___"
 PEPPER_PORT = 9559
-EVENT_ROOT_NAME = "Bluemix/SpeechToTextProxy/"  # 本アプリが使用するPepperのメモリのルートパス
+EVENT_ROOT_NAME = "Bluemix/STTProxy/"  # 本アプリが使用するPepperのメモリのルートパス
 USERNAME = "********"  # credentials.username (Bluemix Speech To Text)
 PASSWORD = "********"  # credentials.password (Bluemix Speech To Text)
 URL = "https://stream.watsonplatform.net/speech-to-text/api"
 CONFIDENCE = 0.2  # 変換における信頼性の許容値(0.0~1.0) 許容値未満の変換結果は無視される
-# ===== /parameters =====
+# ==== /parameters ====
 
 StreamingRecorderModule = None
 SpeechToTextProxyModule = None
-
 broker = None
+logger = get_logger()
 
 
 def main():
@@ -30,24 +29,23 @@ def main():
     global SpeechToTextProxyModule
     global broker
 
+    logger.info("init watson")
     watson = WatsonWrap(USERNAME, PASSWORD, URL)
-
-    print "init watson"
     token = get_token(watson)
     stream = watson.recognize_stream(token)
 
-    print "init remote pepper"
+    logger.info("init remote pepper")
     broker = ALBroker("myBroker", "0.0.0.0", 0, PEPPER_IP, PEPPER_PORT)
 
-    print "init StreamingRecorderModule"
-    recorder = StreamingRecorderModule = StreamingRecorder("StreamingRecorderModule")
+    logger.info("init StreamingRecorderModule")
+    recorder = StreamingRecorderModule = pepper.StreamingAudioRecorder("StreamingRecorderModule")
 
-    print "init SpeechToTextProxyMoudle"
+    logger.info("init SpeechToTextProxyModule")
     proxy = SpeechToTextProxyModule = STTProxy("SpeechToTextProxyModule", EVENT_ROOT_NAME, recorder, stream,
                                                confidence=CONFIDENCE)
-    proxy.subscribe_events()
+    proxy.init_events()
 
-    print "ready..."
+    logger.info("ready...")
 
     # forever
     while True:
@@ -57,9 +55,9 @@ def main():
 def get_token(watson):
     r = watson.get_token()
     if r.status_code != 200:
-        print r.url
-        print r.status_code
-        print r.text.encode('utf-8')
+        logger.info(r.url)
+        logger.info(r.status_code)
+        logger.info(r.text.encode('utf-8'))
         exit(1)
 
     return r.text
