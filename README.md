@@ -1,4 +1,5 @@
 # qibluemix
+NAOqiとbluemixの連携用ライブラリ
 
 ## 環境
 - NAOqiOS: 
@@ -47,3 +48,7 @@ Pepperのマイクから拾った音声をテキストに変換し、結果をPe
 ~~~
 Error|None
 ~~~
+
+## LICENCE
+The MIT License (MIT)
+Copyright (c) 2015 snakazawa
