@@ -2,7 +2,7 @@
 NAOqiとbluemixの連携用ライブラリ
 
 ## 環境
-- NAOqiOS: 
+- NAOqiOS: 2.4.2.26
 - Choregraphe: 2.4.2
 - Python: 2.7.10
 - pynaoqi: 2.1.4.13
