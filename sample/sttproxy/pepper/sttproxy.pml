@@ -5,7 +5,12 @@
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs />
-    <Resources />
+    <Resources>
+        <File name="index" src="html/index.html" />
+        <File name="main" src="html/main.css" />
+        <File name="main" src="html/main.js" />
+        <File name="qi" src="html/vendor/qi.js" />
+    </Resources>
     <Topics />
     <IgnoredPaths>
         <Path src=".metadata" />

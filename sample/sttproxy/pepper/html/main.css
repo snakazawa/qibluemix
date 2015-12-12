@@ -1,0 +1,23 @@
+main {
+    display: table;
+    width: 1200px;
+    height: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+main #words {
+    font-size: 96px;
+    line-height: 96px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+main #confidence {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    font-size: 32px;
+}
