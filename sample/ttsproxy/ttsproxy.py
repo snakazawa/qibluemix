@@ -11,11 +11,11 @@ from qibluemix.pepper import SpeechRecognitionMemory, StreamingAudioRecorder
 from qibluemix.watson import Watson
 
 # ==== parameters ====
-PEPPER_IP = "192.168.10.101"
+PEPPER_IP = "192.168.xxx.xxx"
 PEPPER_PORT = 9559
 EVENT_ROOT_NAME = "Bluemix/STTProxy/"  # 本アプリが使用するPepperのメモリのルートパス
-USERNAME = "171e6d24-fe75-4531-b0c2-596e5eb8cdf5"  # credentials.username (Bluemix Speech To Text)
-PASSWORD = "eiGyFVAn6qSH"  # credentials.password (Bluemix Speech To Text)
+USERNAME = "********"  # credentials.username (Bluemix Speech To Text)
+PASSWORD = "********"  # credentials.password (Bluemix Speech To Text)
 URL = "https://stream.watsonplatform.net/speech-to-text/api"
 CONFIDENCE = 0.2  # 変換における信頼性の許容値(0.0~1.0) 許容値未満の変換結果は無視される
 # ==== /parameters ====
@@ -53,7 +53,7 @@ def main():
 
     # manual(proxy, duration=10, after_wait=3)
 
-    # to service
+    # service
     while True:
         time.sleep(1)
 
