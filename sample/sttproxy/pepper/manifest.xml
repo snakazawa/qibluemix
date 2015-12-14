@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.0" uuid="speechtotextproxy_sample-c15c91">
+<package uuid="speechtotextproxy_sample-c15c91" version="0.0.0">
  <names>
   <name lang="en_US">SpeechToTextProxy_sample</name>
  </names>
