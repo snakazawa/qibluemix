@@ -1,3 +1,3 @@
-pynaoqi==2.1.4.13
-requests==2.7.0
-websocket-client==0.32.0
+pynaoqi==2.5.5.5
+requests==2.15.1
+websocket-client==0.40.0
